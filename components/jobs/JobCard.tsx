@@ -9,6 +9,21 @@ interface JobCardProps {
   job: Job;
 }
 
+/**
+ * JobCard Component
+ * 
+ * Purpose:
+ * Reusable presentational card component for displaying individual job postings.
+ * Used across the Featured Jobs landing section and main `/jobs` search listing pages.
+ * 
+ * Architectural & Future Integration Notes:
+ * - Bookmark UI Button:
+ *   Currently manages local client UI toggle state (`isSaved`).
+ *   Future integration will bind `onClick` to Supabase RLS (`saved_jobs` table: `user_id`, `job_id`, `created_at`).
+ * - Card Navigation:
+ *   Utilizes stretched link overlay pattern pointing to `/jobs/[id]`, leading to the
+ *   dynamic job details page where applicants can submit applications to the `applications` table.
+ */
 export default function JobCard({ job }: JobCardProps) {
   const [isSaved, setIsSaved] = useState(false);
 

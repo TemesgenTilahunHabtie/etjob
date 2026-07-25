@@ -2,6 +2,21 @@
 
 import Link from "next/link";
 
+/**
+ * HeroSection Component
+ * 
+ * Purpose:
+ * Primary landing page hero component introducing ETJob's value proposition.
+ * Provides an immediate job search interface and highlights the Telegram Assistant feature.
+ * 
+ * Architectural & Future Integration Notes:
+ * - Search Interface:
+ *   Will redirect search queries (keywords, location) to `/jobs?q=...` which will invoke
+ *   the search service in `services/jobs.ts` executing Supabase full-text search.
+ * - Telegram Assistant Card Preview:
+ *   Visual presentation representing the automated notification payload sent by the
+ *   Telegram Bot API service when background matching jobs find candidate preference hits.
+ */
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/50 via-white to-white py-12 md:py-20 lg:py-24 dark:from-slate-900/50 dark:via-slate-950 dark:to-slate-950">

@@ -95,6 +95,27 @@ const EMPLOYER_STEPS: WorkflowStep[] = [
   },
 ];
 
+/**
+ * HowItWorks Component
+ * 
+ * Purpose:
+ * Landing page section detailing the 4-step workflow for both Job Seekers and Employers.
+ * Demonstrates how ETJob provides proactive job matching alongside Telegram bot alerts.
+ * 
+ * Architectural & Future Backend Flow:
+ * - Job Seeker Flow:
+ *   1. Supabase Auth signup & login
+ *   2. Write to `profiles` table (skills, experience, CV)
+ *   3. Write to `job_preferences` table (desired roles, locations, remote status, salary)
+ *   4. Automated background worker matches criteria and dispatches payload to Telegram Bot API
+ *   5. User reviews matched job and submits application to `applications` table
+ * 
+ * - Employer Flow:
+ *   1. Supabase Auth (Employer role) & create record in `company_profiles` table
+ *   2. Post new job vacancy into `jobs` table
+ *   3. Matching engine filters candidates based on post requirements
+ *   4. Review received candidate records from `applications` table inside Employer Dashboard
+ */
 export default function HowItWorks() {
   const [activeRole, setActiveRole] = useState<"seeker" | "employer">("seeker");
 

@@ -3,6 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 
+/**
+ * Global Navbar Component
+ * 
+ * Purpose:
+ * Provides sticky, accessible navigation across all ETJob pages.
+ * 
+ * Architectural & Future Integration Notes:
+ * - Currently renders unauthenticated navigation links (Jobs, Companies, About, Login, Sign Up, Post a Job).
+ * - Future Supabase Authentication:
+ *   Will consume an auth context/hook (`useAuth()`) listening to Supabase Auth state.
+ * - Future Role-Based Navigation:
+ *   - Job Seeker: Saved Jobs, Applications, Profile, Telegram Alert preferences.
+ *   - Employer: Post a Job CTA, Employer Dashboard, Applicants management.
+ *   - Admin: Moderation console & company verification links.
+ */
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

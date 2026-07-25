@@ -2,6 +2,19 @@ import Link from "next/link";
 import JobCard from "@/components/jobs/JobCard";
 import { MOCK_JOBS } from "@/data/mockJobs";
 
+/**
+ * FeaturedJobs Component
+ * 
+ * Purpose:
+ * Renders a curated grid of highlighted job vacancies on the landing page.
+ * 
+ * Architectural & Future Integration Notes:
+ * - Current State: Consumes seed data imported from `data/mockJobs.ts`.
+ * - Future Supabase Integration:
+ *   `MOCK_JOBS` will be replaced by an async data fetch calling `getFeaturedJobs()`
+ *   from `services/jobs.ts` which queries Supabase:
+ *   `supabase.from('jobs').select('*').eq('featured', true).limit(6)`
+ */
 export default function FeaturedJobs() {
   return (
     <section className="py-16 md:py-24 bg-slate-50/50 dark:bg-slate-950/50">

@@ -39,7 +39,7 @@ const EMPLOYER_DROPDOWN_ITEMS: EmployerDropdownItem[] = [
  * Provides sticky, accessible navigation across all ETJob pages.
  * 
  * Architectural & Future Integration Notes:
- * - Currently renders navigation links (Jobs, Categories, Companies, Employers Dropdown, About).
+ * - Currently renders navigation links (Jobs, Companies, Categories, For Employers Dropdown, About).
  * - Future Supabase Authentication:
  *   Will consume an auth context/hook (`useAuth()`) listening to Supabase Auth state.
  * - Future Categories & Employer Data:
@@ -74,7 +74,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links: Jobs -> Companies -> Categories -> For Employers -> About */}
           <nav className="hidden md:flex md:items-center md:gap-1" aria-label="Main Navigation">
             <Link
               href="/jobs"
@@ -84,17 +84,17 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/categories"
-              className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-all hover:bg-slate-100/60 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800/60 dark:hover:text-blue-400"
-            >
-              Categories
-            </Link>
-
-            <Link
               href="/companies"
               className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-all hover:bg-slate-100/60 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800/60 dark:hover:text-blue-400"
             >
               Companies
+            </Link>
+
+            <Link
+              href="/jobs/categories"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-all hover:bg-slate-100/60 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800/60 dark:hover:text-blue-400"
+            >
+              Categories
             </Link>
 
             {/* Employers Dropdown Item */}
@@ -109,7 +109,7 @@ export default function Navbar() {
                 className="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-all hover:bg-slate-100/60 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800/60 dark:hover:text-blue-400"
                 aria-expanded={isEmployerDropdownOpen}
               >
-                <span>Employers</span>
+                <span>For Employers</span>
                 <svg
                   className={`h-4 w-4 transition-transform duration-200 ${
                     isEmployerDropdownOpen ? "rotate-180 text-blue-600" : "text-slate-400"
@@ -236,14 +236,6 @@ export default function Navbar() {
             >
               Jobs
             </Link>
-            
-            <Link
-              href="/categories"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-blue-400"
-            >
-              Categories
-            </Link>
 
             <Link
               href="/companies"
@@ -251,6 +243,14 @@ export default function Navbar() {
               className="rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-blue-400"
             >
               Companies
+            </Link>
+            
+            <Link
+              href="/jobs/categories"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-blue-400"
+            >
+              Categories
             </Link>
 
             {/* Mobile Employers Expandable Sub-Menu */}
@@ -260,7 +260,7 @@ export default function Navbar() {
                 onClick={() => setIsMobileEmployerOpen(!isMobileEmployerOpen)}
                 className="flex w-full items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-blue-400"
               >
-                <span>Employers</span>
+                <span>For Employers</span>
                 <svg
                   className={`h-4 w-4 transition-transform duration-200 ${
                     isMobileEmployerOpen ? "rotate-180 text-blue-600" : "text-slate-400"

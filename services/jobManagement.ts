@@ -17,6 +17,7 @@ export interface CreateJobInput {
   remote?: boolean;
   featured?: boolean;
   status?: JobStatusEnum;
+  expiresAt?: string;
   skillIds?: string[];
 }
 
@@ -45,6 +46,7 @@ export async function createManagedJob(
         remote: input.remote ?? false,
         featured: input.featured ?? false,
         status: input.status || "active",
+        expires_at: input.expiresAt || null,
       })
       .select()
       .single();

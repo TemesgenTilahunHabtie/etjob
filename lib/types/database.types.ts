@@ -337,6 +337,7 @@ export type Database = {
           views_count: number
           application_count: number
           embedding: string | null
+          expires_at: string | null
           created_at: string
           updated_at: string
         }
@@ -357,6 +358,7 @@ export type Database = {
           views_count?: number
           application_count?: number
           embedding?: string | null
+          expires_at?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -377,6 +379,7 @@ export type Database = {
           views_count?: number
           application_count?: number
           embedding?: string | null
+          expires_at?: string | null
           created_at?: string
           updated_at?: string
         }

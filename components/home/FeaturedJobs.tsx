@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MOCK_JOBS } from "@/data/mockJobs";
+import { getFeaturedJobs } from "@/services/jobs";
 
 interface CategoryItem {
   id: string;
@@ -29,13 +29,12 @@ const POPULAR_CATEGORIES: CategoryItem[] = [
  * High-density marketplace discovery section pairing a compact 2-job preview card
  * with a prominent category exploration grid ("Find Jobs by Category").
  * 
- * Architectural & Future Backend Flow:
- * - Featured Jobs Query: `supabase.from('jobs').select('*').eq('featured', true).limit(2)`
- * - Categories Query: `supabase.from('job_categories').select('*').order('name', { ascending: true })`
+ * Data Service Integration:
+ * - Fetches top 2 featured jobs dynamically via `getFeaturedJobs(2)`
  */
-export default function FeaturedJobs() {
-  // Select top 2 featured jobs for a lightweight preview
-  const previewJobs = MOCK_JOBS.slice(0, 2);
+export default async function FeaturedJobs() {
+  // Select top 2 featured jobs for a lightweight preview from data service
+  const previewJobs = await getFeaturedJobs(2);
 
   return (
     <section className="py-10 md:py-14 bg-slate-50/50 dark:bg-slate-950/50 border-y border-slate-200/60 dark:border-slate-800/80">
